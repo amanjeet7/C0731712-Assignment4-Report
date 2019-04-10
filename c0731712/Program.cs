@@ -17,7 +17,8 @@ namespace c0731712
             Program p = new Program();
             p.Beowulf = new ArrayList();
             p.ReadTextFiles();
-           
+            Console.ReadLine();
+            
         }
         public void run()
         { this.ReadTextFiles(); }
@@ -26,19 +27,24 @@ namespace c0731712
         {
             using (StreamReader file = new StreamReader("U:\\Users\\731712.STUDENT.000\\Downloads\\Beowulf.txt"))
             {
-                int counter = 0;
-                string ln;
+                int words = 0;
+                string delim = " ,.";
+                string[] fields = null;
+                string line = null;
 
-                while ((ln = file.ReadLine()) !=null)
+                while (!file.EndOfStream)
                 {
-                    Console.WriteLine(ln);
-                    Beowulf.Add(ln);
+                    line = file.ReadLine();//each time you read a line you should split it into the words
+                    line.Trim();
+                    fields = line.Split(delim.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    words += fields.Length; //and just add how many of them there is
                 }
-                file.Close();
-                counter = File.ReadLines("U:\\Users\\731712.STUDENT.000\\Downloads\\Beowulf.txt").Count();
-                Console.WriteLine("\n\n\n\n Number of lines in this file are : " + counter);
-                Console.ReadLine();
 
+
+
+                Console.WriteLine("The word count is {0}", words);
+                file.Close();
+               
             }
         }
         public int FindNumberOfBlankSpaces(string line)
