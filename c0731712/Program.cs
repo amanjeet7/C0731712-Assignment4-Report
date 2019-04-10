@@ -19,7 +19,7 @@ namespace c0731712
         public void run() { this.ReadTextFiles(); }
         public void ReadTextFiles()
         {
-            using (StreamReader file = new StreamReader("u:/Users/731712.STUDENT.000/Downloads/Beowulf.txt"))
+            using (StreamReader file = new StreamReader("U:\\Users\\731712.STUDENT.000\\Downloads\\Beowulf.txt"))
             {
                 int counter = 0;
                 string ln;
