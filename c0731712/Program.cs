@@ -16,10 +16,8 @@ namespace c0731712
            
             Program p = new Program();
             p.Beowulf = new ArrayList();
-
             p.ReadTextFiles();
-            Console.ReadLine();
-
+           
         }
         public void run()
         { this.ReadTextFiles(); }
@@ -37,7 +35,10 @@ namespace c0731712
                     Beowulf.Add(ln);
                 }
                 file.Close();
-                
+                counter = File.ReadLines("U:\\Users\\731712.STUDENT.000\\Downloads\\Beowulf.txt").Count();
+                Console.WriteLine("\n\n\n\n Number of lines in this file are : " + counter);
+                Console.ReadLine();
+
             }
         }
         public int FindNumberOfBlankSpaces(string line)
