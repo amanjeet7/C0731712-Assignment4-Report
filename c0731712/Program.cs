@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
+using System.IO;
 
 namespace c0731712
 {
@@ -15,8 +17,13 @@ namespace c0731712
             Program p = new Program();
             p.Beowulf = new ArrayList();
 
+            p.ReadTextFiles();
+            Console.ReadLine();
+
         }
-        public void run() { this.ReadTextFiles(); }
+        public void run()
+        { this.ReadTextFiles(); }
+
         public void ReadTextFiles()
         {
             using (StreamReader file = new StreamReader("U:\\Users\\731712.STUDENT.000\\Downloads\\Beowulf.txt"))
@@ -30,7 +37,7 @@ namespace c0731712
                     Beowulf.Add(ln);
                 }
                 file.Close();
-                Console.WriteLine($"File has { counter} lines.");
+                
             }
         }
         public int FindNumberOfBlankSpaces(string line)
