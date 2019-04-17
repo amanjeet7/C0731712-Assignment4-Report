@@ -11,6 +11,8 @@ namespace c0731712
     class Program
     {
         ArrayList Beowulf;
+         int counterletters = 0;
+         int countSpaces = 0;
         static void Main(string[] args)
         {
            
