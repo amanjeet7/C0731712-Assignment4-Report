@@ -20,44 +20,53 @@ namespace c0731712
             Console.ReadLine();
             
         }
-        public void run()
-        { this.ReadTextFiles(); }
-
+  
+        public void Run() { this.ReadTextFiles(); }
         public void ReadTextFiles()
         {
-            using (StreamReader file = new StreamReader("U:\\Users\\731712.STUDENT.000\\Downloads\\Beowulf.txt"))
-            {
-                int words = 0;
-                string delim = " ,.";
-                string[] fields = null;
-                string line = null;
 
-                while (!file.EndOfStream)
+            using (StreamReader sr = new StreamReader("U:\\Users\\731712.STUDENT.000\\Downloads\\Beowulf.txt"))
+            {
+                string line;
+                int counter = 0;
+                int a = 0, myWord = 1;
+
+                while ((line = sr.ReadLine()) != null)
                 {
-                    line = file.ReadLine();//each time you read a line you should split it into the words
-                    line.Trim();
-                    fields = line.Split(delim.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                    words += fields.Length; //and just add how many of them there is
+                    Console.WriteLine(line);
+                    Beowulf.Add(line);
+                    FindNumberOfBlankSpaces(line);
+                    counter++;
+
+                    while (a <= line.Length - 1)
+                    {
+                        if (line[a] == ' ' || line[a] == '\n' || line[a] == '\t')
+                        {
+                            myWord++;
+                        }
+                        a++;
+                    }
+                    a = 0;
+
                 }
 
 
-
-                Console.WriteLine("The word count is {0}", words);
-                file.Close();
-               
+                Console.WriteLine("\n\n\n\n Number of lines in this file are " + counter);
+                Console.WriteLine("The word count is " + myWord);
+              
             }
+
         }
         public int FindNumberOfBlankSpaces(string line)
         {
-            int countletters = 0;
-            int countspaces = 0;
+
 
             foreach (char c in line)
             {
-                if (char.IsLetter(c)) { countletters++; }
-                if (char.IsWhiteSpace(c)) { countletters++; }
+                if (char.IsLetter(c)) { counterletters++; }
+                if (char.IsWhiteSpace(c)) { countSpaces++; }
             }
-            return countspaces;
+            return countSpaces;
         }
     }
 }
