@@ -33,6 +33,7 @@ namespace c0731712
                 int counter = 0;
                 int a = 0, myWord = 1;
                  ArrayList lineNumbers = new ArrayList();
+                ArrayList lineNumbers2 = new ArrayList();
                 int linenum = 1;
                 lineNumbers.Add(22);
    
@@ -42,7 +43,7 @@ namespace c0731712
                     Beowulf.Add(line);
                     FindNumberOfBlankSpaces(line);
                     counter++;
-
+                    //section b
                     while (a <= line.Length - 1)
                     {
                         if (line[a] == ' ' || line[a] == '\n' || line[a] == '\t')
@@ -52,12 +53,20 @@ namespace c0731712
                         a++;
                     }
                     a = 0;
-
+                    //section c
                     if (line.Substring(0).Contains("Sea") || line.Substring(0).Contains("sea") && line.Substring(0).Contains("Fare") || line.Substring(0).Contains("fare"))
                     {
                         lineNumbers.Add(linenum);
                     }
                    linenum++;
+
+                    if (line.Substring(0).Contains("fare") || line.Substring(0).Contains("Fare"))
+                    {
+                        if (!(line.Substring(0).Contains("war") || line.Substring(0).Contains("War")))
+                        {
+                            lineNumbers2.Add(linenum);
+                        }
+                    }
 
                 }
 
@@ -65,8 +74,14 @@ namespace c0731712
                 Console.WriteLine("\n\n\n\n Number of lines in this file are " + counter);
                 Console.WriteLine("\n The word count is " + myWord);
 
-                Console.WriteLine("\nThe line which contains both sea and fare");
+                Console.WriteLine("\nThe lines which contains both sea and fare");
                 foreach (int i in lineNumbers)
+                {
+                    Console.WriteLine(i + " ");
+                }
+
+                Console.WriteLine("\nThe lines which contains Fare, but not War");
+                foreach (int i in lineNumbers2)
                 {
                     Console.WriteLine(i + " ");
                 }
