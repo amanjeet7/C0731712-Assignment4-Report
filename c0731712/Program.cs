@@ -32,7 +32,10 @@ namespace c0731712
                 string line;
                 int counter = 0;
                 int a = 0, myWord = 1;
-
+                 ArrayList lineNumbers = new ArrayList();
+                int linenum = 1;
+                lineNumbers.Add(22);
+   
                 while ((line = sr.ReadLine()) != null)
                 {
                     Console.WriteLine(line);
@@ -50,11 +53,23 @@ namespace c0731712
                     }
                     a = 0;
 
+                    if (line.Substring(0).Contains("Sea") || line.Substring(0).Contains("sea") && line.Substring(0).Contains("Fare") || line.Substring(0).Contains("fare"))
+                    {
+                        lineNumbers.Add(linenum);
+                    }
+                   linenum++;
+
                 }
 
 
                 Console.WriteLine("\n\n\n\n Number of lines in this file are " + counter);
-                Console.WriteLine("The word count is " + myWord);
+                Console.WriteLine("\n The word count is " + myWord);
+
+                Console.WriteLine("\nThe line which contains both sea and fare");
+                foreach (int i in lineNumbers)
+                {
+                    Console.WriteLine(i + " ");
+                }
               
             }
 
