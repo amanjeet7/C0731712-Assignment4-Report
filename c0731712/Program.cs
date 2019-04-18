@@ -32,10 +32,11 @@ namespace c0731712
                 string line;
                 int counter = 0;
                 int a = 0, myWord = 1;
-                 ArrayList lineNumbers = new ArrayList();
+                ArrayList lineNumbers = new ArrayList();
                 ArrayList lineNumbers2 = new ArrayList();
                 int linenum = 1;
                 lineNumbers.Add(22);
+                float averageLetterPerWord;
    
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -43,6 +44,7 @@ namespace c0731712
                     Beowulf.Add(line);
                     FindNumberOfBlankSpaces(line);
                     counter++;
+                    
                     //section b
                     while (a <= line.Length - 1)
                     {
@@ -59,7 +61,7 @@ namespace c0731712
                         lineNumbers.Add(linenum);
                     }
                    linenum++;
-
+                    //section d
                     if (line.Substring(0).Contains("fare") || line.Substring(0).Contains("Fare"))
                     {
                         if (!(line.Substring(0).Contains("war") || line.Substring(0).Contains("War")))
@@ -69,10 +71,11 @@ namespace c0731712
                     }
 
                 }
-
+                 averageLetterPerWord = counterletters / countSpaces;
 
                 Console.WriteLine("\n\n\n\n Number of lines in this file are " + counter);
                 Console.WriteLine("\n The word count is " + myWord);
+                Console.WriteLine("\n number of average letters per word in this file are  " + averageLetterPerWord);
 
                 Console.WriteLine("\nThe lines which contains both sea and fare");
                 foreach (int i in lineNumbers)
